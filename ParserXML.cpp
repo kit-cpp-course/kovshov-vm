@@ -145,14 +145,14 @@ vector<string> preParse(string input) {
             start = i + 1;
         }
     }
-    for (const auto &an : ans) {
+    /*for (const auto &an : ans) {
         cout << an << endl;
-    }
+    }*/
     return ans;
 }
 
 vector<Chunk> parseXML(string input) {
-    cout << input << endl;
+    //cout << input << endl;
     vector<string> in = preParse(std::move(input));
     vector<Chunk> data;
     for (int i = 0; i < in.size(); ++i) {
@@ -167,7 +167,7 @@ vector<Chunk> parseXML(string input) {
 }
 
 ModelObject parserXML::parseToObject(string input) {
-    cout << input << endl;
+    //cout << input << endl;
     string ans = simplify(input);
     try {
         return ModelObject(parseXML(ans));

@@ -19,11 +19,12 @@ int main(int argc, char *argv[]) {
 
     Parser *XML_P = new parserXML;
     Parser *JSON_P = new parserJSON;
+    string data, line;
 
     switch (flag) {
         case 1 : {
-            ifstream in_stream(in);
-            string data, line;
+            ifstream in_stream;
+            in_stream.open(in);
             if (in_stream.is_open()) {
                 while (getline(in_stream, line)) {
                     data += line;
@@ -32,14 +33,14 @@ int main(int argc, char *argv[]) {
             in_stream.close();
             ofstream out_stream(in.substr(0, in.length() - 3) + "json");
             if (out_stream.is_open()) {
-                JSON_P->parseFromObject(XML_P->parseToObject(data));
+                out_stream << JSON_P->parseFromObject(XML_P->parseToObject(data));
             }
             out_stream.close();
             break;
         }
         case 2 : {
-            ifstream in_stream(in);
-            string data, line;
+            ifstream in_stream;
+            in_stream.open(in);
             if (in_stream.is_open()) {
                 while (getline(in_stream, line)) {
                     data += line;
@@ -48,39 +49,41 @@ int main(int argc, char *argv[]) {
             in_stream.close();
             ofstream out_stream(in.substr(0, in.length() - 4) + "xml");
             if (out_stream.is_open()) {
-                XML_P->parseFromObject(JSON_P->parseToObject(data));
+                out_stream << XML_P->parseFromObject(JSON_P->parseToObject(data));
             }
             out_stream.close();
             break;
         }
         case 3 : {
-            ifstream in_stream(in);
-            string data, line;
+            ifstream in_stream;
+            in_stream.open(in);
             if (in_stream.is_open()) {
                 while (getline(in_stream, line)) {
                     data += line;
                 }
             }
             in_stream.close();
-            ofstream out_stream(out);
+            ofstream out_stream;
+            out_stream.open(out);
             if (out_stream.is_open()) {
-                JSON_P->parseFromObject(XML_P->parseToObject(data));
+                out_stream << JSON_P->parseFromObject(XML_P->parseToObject(data));
             }
             out_stream.close();
             break;
         }
         case 4 : {
-            ifstream in_stream(in);
-            string data, line;
+            ifstream in_stream;
+            in_stream.open(in);
             if (in_stream.is_open()) {
                 while (getline(in_stream, line)) {
                     data += line;
                 }
             }
             in_stream.close();
-            ofstream out_stream(out);
+            ofstream out_stream;
+            out_stream.open(out);
             if (out_stream.is_open()) {
-                XML_P->parseFromObject(JSON_P->parseToObject(data));
+                out_stream << XML_P->parseFromObject(JSON_P->parseToObject(data));
             }
             out_stream.close();
             break;

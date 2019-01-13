@@ -19,12 +19,12 @@ int CmdArgs::argParser(int argc, char *argv[], string &in, string &out) {
     if (argc == 3) {
         string input = argv[1];
         string output = argv[2];
-        if (input.substr(input.length() - 4, 4) == ".xml" && output.substr(input.length() - 5, 5) == ".json") {
+        if (input.substr(input.length() - 4, 4) == ".xml" && output.substr(output.length() - 5, 5) == ".json") {
             in = input;
             out = output;
             return 3;
         }
-        if (input.substr(input.length() - 5, 5) == ".json" && output.substr(input.length() - 4, 4) == ".xml") {
+        if (input.substr(input.length() - 5, 5) == ".json" && output.substr(output.length() - 4, 4) == ".xml") {
             in = input;
             out = output;
             return 4;
