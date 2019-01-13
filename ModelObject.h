@@ -9,10 +9,15 @@
 
 using namespace std;
 
+/*
+ * Класс - модель древовидного типа данных
+ */
 class ModelObject {
 
 private:
-
+    /*
+     * Массив элементов, у каждого из которых есть имя, значени и тип (подробнее в Chunk.h)
+     */
     vector<Chunk> data;
 
 public:
@@ -21,15 +26,7 @@ public:
 
     explicit ModelObject(vector<Chunk> input) : data(std::move(input)) {};
 
-    void draw() {
-        for (auto &i : data) {
-            cout << i.name << '|'
-                 << i.valueType << '|'
-                 << i.value << '\n';
-        }
-    }
-
-    vector<Chunk> getData(){
+    vector<Chunk> getData() {
         return data;
     }
 
