@@ -31,7 +31,8 @@ int main(int argc, char *argv[]) {
                 }
             }
             in_stream.close();
-            ofstream out_stream(in.substr(0, in.length() - 3) + "json");
+            out = in.substr(0, in.length() - 3) + "json";
+            ofstream out_stream(out);
             if (out_stream.is_open()) {
                 out_stream << JSON_P->parseFromObject(XML_P->parseToObject(data));
             }
@@ -47,7 +48,8 @@ int main(int argc, char *argv[]) {
                 }
             }
             in_stream.close();
-            ofstream out_stream(in.substr(0, in.length() - 4) + "xml");
+            out = in.substr(0, in.length() - 4) + "xml";
+            ofstream out_stream(out);
             if (out_stream.is_open()) {
                 out_stream << XML_P->parseFromObject(JSON_P->parseToObject(data));
             }
@@ -91,5 +93,8 @@ int main(int argc, char *argv[]) {
         default:
             break;
     }
+
+    cout << "The conversion is completed. The result is in : " << out << endl;
+
     return 0;
 }
