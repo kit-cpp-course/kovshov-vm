@@ -2,8 +2,8 @@
 
 #include <string>
 #include <vector>
-#include <cstring>
 #include <stack>
+#include <cstring>
 
 #include "Parser.h"
 
